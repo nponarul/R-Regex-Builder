@@ -1,2 +1,2 @@
 # R-Regex-Builder
-Shiny app to help learn how to build regex statements in R
+This is one of my first Shiny apps, designed to help learn how to build regex statements in R.
