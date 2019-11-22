@@ -1,9 +1,9 @@
 ###########################################################################
-#Programming Challenge
-#11/30/2017
-#Regex Builder
-#This file runs the Shiny app regex builder
-#Dependencies: stringr
+# R Regex Builder
+# Author: Nellie Ponarul
+# Last Updated 11/22/2019
+# This file runs the Shiny app regex builder
+# Dependencies: stringr
 ###########################################################################
 
 # I. Program Setup --------------------------------------------------------
