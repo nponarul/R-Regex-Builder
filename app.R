@@ -14,47 +14,52 @@ source("regexfunction.R")
 # II. UI definition -------------------------------------------------------
 
 ui <- fluidPage(
-  # CSS
-  tags$head(
-    tags$style(HTML('#addType{background-color:#6baed6'))
-    ,tags$style(HTML('#addLookaround{background-color:#6baed6'))
-    ,tags$style(HTML('#addLiteral{background-color:#6baed6'))
-    ,tags$style(HTML('#remove{background-color:#6baed6'))
-    ,tags$style(HTML('#clear{background-color:#3182bd'))
-    
-  )
+  # CSS link
+  includeCSS("www/style.css"),
   
-  # Elements in the side bar
-  ,sidebarLayout(
-    sidebarPanel(
+    fluidRow(
+      h1("R Regex Builder")
+    ),
+  
+  
+    fluidRow(
+      
+      column(4, 
       # Descriptors well panel
-    wellPanel( h5("Descriptors")
-      ,p("Valid Values include any number and '0+' or '1+'")
+    wellPanel( h5("Character Classes", class = "inputLabel")
+      ,p("Valid quantities include any number and '0+' or '1+'")
       ,textInput("quantity", "Quantity", value="1")
       ,selectInput("type", "Type", c("number", "alpha", "alphanumeric", "punctuation","upper", "lower", "word", "nonword", "space", "notspace", "anything"),"number")
       ,actionButton("addType", "Add")
       ,style="background-color: #f7f7f7"
       )
+      ),
+    column(4, 
       # Literal well panel
-    ,wellPanel( h5("Literal")
+    wellPanel( h5("Literal", class = "inputLabel")
+               , p("Use this to add any literal strings")
                ,textInput("literal", "Literal", value="1")
                ,actionButton("addLiteral", "Add")
                ,style="background-color: #f7f7f7"
     )
+    ),
+    column(4,
       # Lookaround well panel
-    , wellPanel(h5("Lookarounds")
+    wellPanel(h5("Lookarounds", class = "inputLabel")
+      , p("Use this to denote pattenrs that on either end of a string")
       ,selectInput("lookaround", "Lookaround", c("followed by", "not followed by", "preceded by", "not preceded by"), "followed by")
       ,textInput("literalla", "Expression", value="")
       ,actionButton("addLookaround", "Add")
       ,style="border-width:5px;border-color:9ecae1"
     )
-    ,style = "background-color: #bdbdbd"
+    )
+    # ,style = "background-color: #bdbdbd"
   )
+    
   
   # Main panel
-  , mainPanel(
-      titlePanel("Regex Builder")
-      ,wellPanel(
+  , fluidRow(
+      wellPanel(
         p("Input:")
         ,textOutput("input")  
         ,style="background-color: #f7f7f7"
@@ -66,10 +71,11 @@ ui <- fluidPage(
         ,textOutput("output")  
         
       )
-      ,actionButton("clear", "Clear")
-  )
-  )
-)
+      ,actionButton("clear", "Clear", class = "clear")
+      
+  
+  ))
+
 
 
 # III. Server Definition --------------------------------------------------
