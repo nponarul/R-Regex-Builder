@@ -1,9 +1,7 @@
 ###########################################################################
 # R Regex Builder
 # Author: Nellie Ponarul
-# Last Updated 11/22/2019
 # This file runs the Shiny app regex builder
-# Dependencies: stringr
 ###########################################################################
 
 # I. Program Setup --------------------------------------------------------
@@ -93,25 +91,31 @@ ui <- fluidPage(
 # III. Server Definition --------------------------------------------------
 
 server <- function(input, output) {
-  regexVals <- reactiveValues(elements=c()) #list of inputs
+  # create a reactive values list of inputs
+  regexVals <- reactiveValues(elements=c()) 
   
+  # When addType is clicked, add it's values to the reactive Value
   observeEvent(input$addType, {
     regexVals$elements <- c(regexVals$elements, paste0(paste(input$quantity, input$type, sep=","),";"))
   })
+  
+  # When addLiteral is clicked, add it's values to the reactive Value
   observeEvent(input$addLiteral, {
     regexVals$elements <- c(regexVals$elements, paste0(paste(input$literal, "literal", sep=","),";"))
   })
   
+  # When addLookaround is clicked, add it's values to the reactive Value
   observeEvent(input$addLookaround, {
     regexVals$elements <- c(regexVals$elements, paste0(paste(input$literalla, input$lookaround, sep=","),";"))
   })
   
+  # When Remove is clicked, remove the last element from the reactive value
   observeEvent(input$remove, {
     regexVals$elements <- head(regexVals$elements, -1)
     
   })
   
-  # Render Text will re-render every time the regex values list changes
+  # Render Text will re-render every time the reactive values list changes
   output$input <- renderText({
     paste0(regexVals$elements,collapse="")
   })
@@ -121,6 +125,7 @@ server <- function(input, output) {
     regex_dict(paste0(regexVals$elements,collapse=""))
   })
   
+  # When Clear is clicked, reactive values cleared out
   observeEvent(input$clear, {
     regexVals$elements <- c()
   })

@@ -14,28 +14,30 @@
 
 p {
 	font-family: 'Gill Sans';
+	font-size: 14px;
 }
 
 h5 {
-	text-align: center;
 	font-family: 'Gill Sans';
+	text-align: center;
+	text-decoration: underline;
 }
 
 h4 {
 	color: white;
-	font-family: 'Gill Sans';
+	/*font-family: 'Gill Sans';*/
 	padding: 20px;
 }
 
 body {
 	background-color: #7fcdbb;
-	font-family: 'Gill Sans';
+
 }
 
 h1 {
 	color: #ffffd9;
 	text-align: center;
-	font-family: 'Gill Sans';
+	/*font-family: 'Gill Sans';*/
 }
 
 .well {
