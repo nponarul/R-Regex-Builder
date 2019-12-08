@@ -17,62 +17,74 @@ ui <- fluidPage(
   # CSS link
   includeCSS("www/style.css"),
   
+  # Title row
     fluidRow(
-      h1("R Regex Builder")
+      h1("Regex Builder")
     ),
   
-  
+  # Input row
     fluidRow(
-      
+      h4("Regular expressions (RegEx) are used to identify patterns in strings. Explore how to create RegEx patterns using the following options."),
       column(4, 
-      # Descriptors well panel
-    wellPanel( h5("Character Classes", class = "inputLabel")
-      ,p("Valid quantities include any number and '0+' or '1+'")
-      ,textInput("quantity", "Quantity", value="1")
-      ,selectInput("type", "Type", c("number", "alpha", "alphanumeric", "punctuation","upper", "lower", "word", "nonword", "space", "notspace", "anything"),"number")
-      ,actionButton("addType", "Add")
-      ,style="background-color: #f7f7f7"
-      )
+      # Character classes well panel
+      wellPanel( h5("Character Classes", class = "inputLabel")
+        ,p("Valid quantities include any number and '0+' or '1+'")
+        ,textInput("quantity", "Quantity", value="1")
+        ,selectInput("type", "Type", c("number", "alpha", "alphanumeric", "punctuation","upper", "lower", "word", "nonword", "space", "notspace", "anything"),"number")
+        ,actionButton("addType", "Add")
+        )
       ),
+    
     column(4, 
       # Literal well panel
-    wellPanel( h5("Literal", class = "inputLabel")
-               , p("Use this to add any literal strings")
-               ,textInput("literal", "Literal", value="1")
-               ,actionButton("addLiteral", "Add")
-               ,style="background-color: #f7f7f7"
-    )
+      wellPanel( h5("Literal", class = "inputLabel")
+                 , p("Use this to add any literal strings")
+                 , br()
+                 , br()
+                 ,textInput("literal", "Literal", value="literal string")
+                 , br()
+                 , br()
+                 , br()
+                 ,actionButton("addLiteral", "Add")
+              )
     ),
+    
     column(4,
       # Lookaround well panel
-    wellPanel(h5("Lookarounds", class = "inputLabel")
-      , p("Use this to denote pattenrs that on either end of a string")
-      ,selectInput("lookaround", "Lookaround", c("followed by", "not followed by", "preceded by", "not preceded by"), "followed by")
-      ,textInput("literalla", "Expression", value="")
-      ,actionButton("addLookaround", "Add")
-      ,style="border-width:5px;border-color:9ecae1"
+      wellPanel(h5("Lookarounds", class = "inputLabel")
+        , p("Use this to denote patterns that on either end of a string")
+        ,selectInput("lookaround", "Lookaround", c("followed by", "not followed by", "preceded by", "not preceded by"), "followed by")
+        ,textInput("literalla", "Expression", value="")
+        ,actionButton("addLookaround", "Add")
+      )
     )
-    )
-    # ,style = "background-color: #bdbdbd"
   )
     
   
   # Main panel
   , fluidRow(
-      wellPanel(
+    column(10, 
+        # input
+        wellPanel(
         p("Input:")
         ,textOutput("input")  
-        ,style="background-color: #f7f7f7"
-      )
-      ,actionButton("remove", "Remove")
-      ,wellPanel(
-        style="border:5px;border-color:9ecae1"
-        ,p("Output:")
+      ),
+
+      # output
+      wellPanel(
+        p("Output:")
         ,textOutput("output")  
         
       )
-      ,actionButton("clear", "Clear", class = "clear")
       
+
+    ),
+    
+    column(2,
+           # remove and clear buttoms
+           actionButton("remove", "Remove"),
+           actionButton("clear", "Clear")
+           )
   
   ))
 

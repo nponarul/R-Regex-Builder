@@ -1,14 +1,43 @@
 /*Regex Builder CSS*/
 
 .action-button {
-	background-color:#6baed6;
+	background-color:#225ea8;
+	color: white;
 }
 
 
-#clear.action-button {
-	background-color: #3182bd;
+#clear.action-button, #remove.action-button {
+	background-color: #081d58;
+	color: white;
+	padding: 10px;
+}
+
+p {
+	font-family: 'Gill Sans';
 }
 
 h5 {
 	text-align: center;
+	font-family: 'Gill Sans';
+}
+
+h4 {
+	color: white;
+	font-family: 'Gill Sans';
+	padding: 20px;
+}
+
+body {
+	background-color: #7fcdbb;
+	font-family: 'Gill Sans';
+}
+
+h1 {
+	color: #ffffd9;
+	text-align: center;
+	font-family: 'Gill Sans';
+}
+
+.well {
+	background-color: #fff7fb;
 }
