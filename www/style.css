@@ -1,0 +1,14 @@
+/*Regex Builder CSS*/
+
+.action-button {
+	background-color:#6baed6;
+}
+
+
+#clear.action-button {
+	background-color: #3182bd;
+}
+
+h5 {
+	text-align: center;
+}
